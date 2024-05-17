@@ -22,6 +22,7 @@ resource "aws_route53_record" "example" {
 resource "aws_acm_certificate_validation" "example" {
   certificate_arn         = aws_acm_certificate.root.arn
   validation_record_fqdns = [for record in aws_route53_record.example : record.fqdn]
+  provider                = aws.us-east-1
 }
 
 resource "aws_route53_record" "root" {
