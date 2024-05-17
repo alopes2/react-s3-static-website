@@ -3,7 +3,7 @@ locals {
 }
 
 resource "aws_cloudfront_origin_access_control" "oac" {
-  name                              = "AngularWebsite"
+  name                              = "ReactWebsite"
   description                       = "Example Policy"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
@@ -19,7 +19,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "My Angular Website Distribution"
+  comment             = "My React Website Distribution"
   default_root_object = "index.html"
 
   custom_error_response {
@@ -69,7 +69,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
 # Sends to the origin and caches it
 resource "aws_cloudfront_cache_policy" "website" {
-  name = "angular_cache_policy"
+  name = "react_cache_policy"
 
   parameters_in_cache_key_and_forwarded_to_origin {
     headers_config {
