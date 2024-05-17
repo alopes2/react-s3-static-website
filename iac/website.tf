@@ -28,8 +28,8 @@ resource "aws_s3_bucket_website_configuration" "website_configuration" {
 data "aws_iam_policy_document" "bucket_policy" {
   statement {
     principals {
-      type        = "*"
-      identifiers = ["*"]
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
     }
     actions = [
       "s3:GetObject"
@@ -37,5 +37,10 @@ data "aws_iam_policy_document" "bucket_policy" {
     resources = [
       "arn:aws:s3:::${aws_s3_bucket.website.bucket}/*"
     ]
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.s3_distribution.arn]
+    }
   }
 }
