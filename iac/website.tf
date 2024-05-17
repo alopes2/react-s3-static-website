@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "website" {
-  bucket = "YOUR_BUCKET_NAME"
+  bucket = "react-s3-static-website"
 }
 
 resource "aws_s3_bucket_public_access_block" "website_bucket_public_access" {
