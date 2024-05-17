@@ -62,8 +62,9 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
   }
 
+  aliases = ["andrelopes.tech"]
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn = aws_acm_certificate.root.arn
   }
 }
 
