@@ -45,7 +45,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = local.website_origin_id
 
-    # cache_policy_id = aws_cloudfront_cache_policy.website.id
+    cache_policy_id = aws_cloudfront_cache_policy.website.id
 
     viewer_protocol_policy = "allow-all"
     min_ttl                = 0
@@ -78,6 +78,7 @@ resource "aws_cloudfront_cache_policy" "website" {
     cookies_config {
       cookie_behavior = "all"
     }
+
     query_strings_config {
       query_string_behavior = "all"
     }
