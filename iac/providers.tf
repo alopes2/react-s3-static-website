@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket = "terraform-medium-api-notification"
-    key    = "angular-s3-static-website/state.tfstate"
+    key    = "react_s3_static_website.tfstate"
   }
 }
 
